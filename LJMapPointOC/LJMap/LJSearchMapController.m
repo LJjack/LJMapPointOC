@@ -41,11 +41,13 @@ UITableViewDelegate, UITableViewDataSource>
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     [self.navigationController setNavigationBarHidden:YES animated:animated];
+    [self.searchField becomeFirstResponder];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
     [self.navigationController setNavigationBarHidden:NO animated:animated];
+    [self.searchField resignFirstResponder];
 }
 
 #pragma mark - Action
