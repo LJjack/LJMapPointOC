@@ -46,7 +46,9 @@ LJSearchMapControllerDelegate>
 
 @property (strong, nonatomic) LJAnnotation *currentAnnotation;
 
-@property (nonatomic, copy) NSArray<LJMapPlace *> *places;
+@property (copy,   nonatomic) NSArray<LJMapPlace *> *places;
+
+@property (strong, nonatomic) UITableViewCell *selectedCell;
 
 @end
 
@@ -149,6 +151,18 @@ LJSearchMapControllerDelegate>
     cell.textLabel.text = model.name;
     cell.detailTextLabel.text = model.detailName;
     return cell;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    self.selectedCell.accessoryType = UITableViewCellAccessoryNone;
+    UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+    cell.accessoryType = UITableViewCellAccessoryCheckmark;
+    self.selectedCell = cell;
+    
+    LJMapPlace *model = self.places[indexPath.row];
+    CLLocationCoordinate2D coord = CLLocationCoordinate2DMake(model.latitude, model.longitude);
+    [self.mapView setCenterCoordinate:coord animated:YES];
+    
 }
 
 #pragma mark - LJSearchMapControllerDelegate
