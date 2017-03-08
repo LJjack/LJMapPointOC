@@ -7,9 +7,10 @@
 //
 
 #import "LJSearchMapController.h"
-#import "LJMapSearch.h"
 
-@interface LJSearchMapController ()<UITextFieldDelegate, UITableViewDelegate, UITableViewDataSource>
+
+@interface LJSearchMapController ()<UITextFieldDelegate,
+UITableViewDelegate, UITableViewDataSource>
 
 @property (weak, nonatomic) IBOutlet UIButton *searchBtn;
 
@@ -23,11 +24,18 @@
 
 @implementation LJSearchMapController
 
+- (void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:UITextFieldTextDidChangeNotification object:nil];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     UIImageView *imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Search"]];
     self.searchField.leftView = imageView;
     self.searchField.leftViewMode = UITextFieldViewModeAlways;//此处用来设置leftview现实时机
+    self.tableView.tableFooterView = [UIView new];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleTextFieldTextDidChangeNotification) name:UITextFieldTextDidChangeNotification object:nil];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -49,13 +57,20 @@
     [self searchMap];
     
 }
+- (IBAction)handleTapGR:(UITapGestureRecognizer *)sender {
+    
+    [self.searchField resignFirstResponder];
+}
+
+- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
+    
+}
+
+- (void)handleTextFieldTextDidChangeNotification {
+    self.searchBtn.enabled = self.searchField.text.length != 0;
+}
 
 #pragma mark - UITextFieldDelegate
-
-- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
-    self.searchBtn.enabled = range.location != 0;
-    return YES;
-}
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
     [self searchMap];
@@ -76,9 +91,25 @@
     return cell;
 }
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+    cell.accessoryType = UITableViewCellAccessoryCheckmark;
+    
+    if ([self.delegate respondsToSelector:@selector(searchMapController:didFinishSeleted:)]) {
+        [self.delegate searchMapController:self didFinishSeleted:self.places[indexPath.row]];
+    }
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [self.navigationController popViewControllerAnimated:YES];
+    });
+    
+}
+
 #pragma mark - Private Method
 
 - (void)searchMap {
+    if (!self.searchField.text.length) {
+        return;
+    }
     LJMapSearch *search = [[LJMapSearch alloc] initWithRegion:self.region query:self.searchField.text];
     
     [search startWithCompletionHandler:^(NSArray<LJMapPlace *> *places) {

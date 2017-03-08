@@ -7,8 +7,6 @@
 //
 
 #import "LJMapSController.h"
-#import <MapKit/MapKit.h>
-#import "LJMapSearch.h"
 #import "LJSearchMapController.h"
 
 @interface LJAnnotation : NSObject<MKAnnotation>
@@ -31,7 +29,9 @@
 
 @end
 
-@interface LJMapSController ()<MKMapViewDelegate, UITableViewDelegate, UITableViewDataSource>
+@interface LJMapSController ()< MKMapViewDelegate,
+UITableViewDelegate, UITableViewDataSource,
+LJSearchMapControllerDelegate>
 
 @property (weak, nonatomic) IBOutlet MKMapView *mapView;
 
@@ -74,6 +74,8 @@
 
 - (IBAction)clickSearchBtn:(UIBarButtonItem *)sender {
     LJSearchMapController *searchC = [self.storyboard instantiateViewControllerWithIdentifier:@"LJSearchMapController"];
+    searchC.delegate = self;
+    searchC.region = MKCoordinateRegionMake(self.mapView.centerCoordinate, MKCoordinateSpanMake(0.1, 0.1));
     [self.navigationController pushViewController:searchC animated:YES];
 }
 
@@ -140,12 +142,20 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return self.places.count;
 }
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"LJMapCell" forIndexPath:indexPath];
     LJMapPlace *model = self.places[indexPath.row];
     cell.textLabel.text = model.name;
     cell.detailTextLabel.text = model.detailName;
     return cell;
+}
+
+#pragma mark - LJSearchMapControllerDelegate
+
+- (void)searchMapController:(LJSearchMapController *)controller didFinishSeleted:(LJMapPlace *)place {
+    CLLocationCoordinate2D coord = CLLocationCoordinate2DMake(place.latitude, place.longitude);
+    [self.mapView setCenterCoordinate:coord animated:YES];
 }
 
 @end

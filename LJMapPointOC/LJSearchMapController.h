@@ -7,10 +7,20 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <MapKit/MapKit.h>
+#import "LJMapSearch.h"
+
+@class LJSearchMapController;
+
+@protocol LJSearchMapControllerDelegate <NSObject>
+
+- (void)searchMapController:(LJSearchMapController *)controller didFinishSeleted:(LJMapPlace *)place;
+
+@end
 
 @interface LJSearchMapController : UIViewController
 
 @property (nonatomic, assign) MKCoordinateRegion region;
+
+@property (nonatomic, weak) id<LJSearchMapControllerDelegate> delegate;
 
 @end
