@@ -108,9 +108,8 @@ UITableViewDelegate, UITableViewDataSource>
 #pragma mark - Private Method
 
 - (void)searchMap {
-    if (!self.searchField.text.length) {
-        return;
-    }
+    if (!self.searchField.text.length) return;
+    [self.searchField resignFirstResponder];
     LJMapSearch *search = [[LJMapSearch alloc] initWithRegion:self.region query:self.searchField.text];
     
     [search startWithCompletionHandler:^(NSArray<LJMapPlace *> *places) {
