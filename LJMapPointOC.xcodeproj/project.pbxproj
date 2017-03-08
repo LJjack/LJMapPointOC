@@ -7,37 +7,39 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		832191CE1E6FB2C50006FD43 /* LJSearchMapController.m in Sources */ = {isa = PBXBuildFile; fileRef = 832191CD1E6FB2C50006FD43 /* LJSearchMapController.m */; };
+		832191D01E7000970006FD43 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 832191CF1E7000970006FD43 /* Assets.xcassets */; };
+		832191D91E7000A50006FD43 /* LJMapSController.m in Sources */ = {isa = PBXBuildFile; fileRef = 832191D31E7000A50006FD43 /* LJMapSController.m */; };
+		832191DA1E7000A50006FD43 /* LJMapSearch.m in Sources */ = {isa = PBXBuildFile; fileRef = 832191D51E7000A50006FD43 /* LJMapSearch.m */; };
+		832191DB1E7000A50006FD43 /* LJSearchMapController.m in Sources */ = {isa = PBXBuildFile; fileRef = 832191D71E7000A50006FD43 /* LJSearchMapController.m */; };
+		832191DC1E7000A50006FD43 /* LJMap.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 832191D81E7000A50006FD43 /* LJMap.storyboard */; };
+		832191DE1E7000D50006FD43 /* Map.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 832191DD1E7000D50006FD43 /* Map.xcassets */; };
 		83B6D9681E6E9F8D00907965 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 83B6D9671E6E9F8D00907965 /* main.m */; };
 		83B6D96B1E6E9F8D00907965 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 83B6D96A1E6E9F8D00907965 /* AppDelegate.m */; };
-		83B6D96E1E6E9F8D00907965 /* LJMapSController.m in Sources */ = {isa = PBXBuildFile; fileRef = 83B6D96D1E6E9F8D00907965 /* LJMapSController.m */; };
-		83B6D9711E6E9F8D00907965 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 83B6D96F1E6E9F8D00907965 /* Main.storyboard */; };
-		83B6D9731E6E9F8D00907965 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 83B6D9721E6E9F8D00907965 /* Assets.xcassets */; };
 		83B6D9761E6E9F8D00907965 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 83B6D9741E6E9F8D00907965 /* LaunchScreen.storyboard */; };
 		83B6D9821E6EA04100907965 /* LJAlertLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = 83B6D97F1E6EA04100907965 /* LJAlertLocation.m */; };
 		83B6D9831E6EA04100907965 /* LJLocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 83B6D9811E6EA04100907965 /* LJLocationManager.m */; };
-		83B6D9861E6EA54A00907965 /* LJMapSearch.m in Sources */ = {isa = PBXBuildFile; fileRef = 83B6D9851E6EA54A00907965 /* LJMapSearch.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		832191CC1E6FB2C50006FD43 /* LJSearchMapController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LJSearchMapController.h; sourceTree = "<group>"; };
-		832191CD1E6FB2C50006FD43 /* LJSearchMapController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LJSearchMapController.m; sourceTree = "<group>"; };
+		832191CF1E7000970006FD43 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		832191D21E7000A50006FD43 /* LJMapSController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LJMapSController.h; sourceTree = "<group>"; };
+		832191D31E7000A50006FD43 /* LJMapSController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LJMapSController.m; sourceTree = "<group>"; };
+		832191D41E7000A50006FD43 /* LJMapSearch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LJMapSearch.h; sourceTree = "<group>"; };
+		832191D51E7000A50006FD43 /* LJMapSearch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LJMapSearch.m; sourceTree = "<group>"; };
+		832191D61E7000A50006FD43 /* LJSearchMapController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LJSearchMapController.h; sourceTree = "<group>"; };
+		832191D71E7000A50006FD43 /* LJSearchMapController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LJSearchMapController.m; sourceTree = "<group>"; };
+		832191D81E7000A50006FD43 /* LJMap.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LJMap.storyboard; sourceTree = "<group>"; };
+		832191DD1E7000D50006FD43 /* Map.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Map.xcassets; sourceTree = "<group>"; };
 		83B6D9631E6E9F8D00907965 /* LJMapPointOC.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LJMapPointOC.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		83B6D9671E6E9F8D00907965 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		83B6D9691E6E9F8D00907965 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		83B6D96A1E6E9F8D00907965 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		83B6D96C1E6E9F8D00907965 /* LJMapSController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LJMapSController.h; sourceTree = "<group>"; };
-		83B6D96D1E6E9F8D00907965 /* LJMapSController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LJMapSController.m; sourceTree = "<group>"; };
-		83B6D9701E6E9F8D00907965 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		83B6D9721E6E9F8D00907965 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		83B6D9751E6E9F8D00907965 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		83B6D9771E6E9F8D00907965 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		83B6D97E1E6EA04100907965 /* LJAlertLocation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LJAlertLocation.h; sourceTree = "<group>"; };
 		83B6D97F1E6EA04100907965 /* LJAlertLocation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LJAlertLocation.m; sourceTree = "<group>"; };
 		83B6D9801E6EA04100907965 /* LJLocationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LJLocationManager.h; sourceTree = "<group>"; };
 		83B6D9811E6EA04100907965 /* LJLocationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LJLocationManager.m; sourceTree = "<group>"; };
-		83B6D9841E6EA54A00907965 /* LJMapSearch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LJMapSearch.h; sourceTree = "<group>"; };
-		83B6D9851E6EA54A00907965 /* LJMapSearch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LJMapSearch.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,6 +53,21 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		832191D11E7000A50006FD43 /* LJMap */ = {
+			isa = PBXGroup;
+			children = (
+				832191D21E7000A50006FD43 /* LJMapSController.h */,
+				832191D31E7000A50006FD43 /* LJMapSController.m */,
+				832191D41E7000A50006FD43 /* LJMapSearch.h */,
+				832191D51E7000A50006FD43 /* LJMapSearch.m */,
+				832191D61E7000A50006FD43 /* LJSearchMapController.h */,
+				832191D71E7000A50006FD43 /* LJSearchMapController.m */,
+				832191D81E7000A50006FD43 /* LJMap.storyboard */,
+				832191DD1E7000D50006FD43 /* Map.xcassets */,
+			);
+			path = LJMap;
+			sourceTree = "<group>";
+		};
 		83B6D95A1E6E9F8D00907965 = {
 			isa = PBXGroup;
 			children = (
@@ -73,16 +90,10 @@
 				83B6D97D1E6EA04100907965 /* LJLocation */,
 				83B6D9691E6E9F8D00907965 /* AppDelegate.h */,
 				83B6D96A1E6E9F8D00907965 /* AppDelegate.m */,
-				83B6D96C1E6E9F8D00907965 /* LJMapSController.h */,
-				83B6D96D1E6E9F8D00907965 /* LJMapSController.m */,
-				832191CC1E6FB2C50006FD43 /* LJSearchMapController.h */,
-				832191CD1E6FB2C50006FD43 /* LJSearchMapController.m */,
-				83B6D9841E6EA54A00907965 /* LJMapSearch.h */,
-				83B6D9851E6EA54A00907965 /* LJMapSearch.m */,
-				83B6D96F1E6E9F8D00907965 /* Main.storyboard */,
-				83B6D9721E6E9F8D00907965 /* Assets.xcassets */,
+				832191D11E7000A50006FD43 /* LJMap */,
 				83B6D9741E6E9F8D00907965 /* LaunchScreen.storyboard */,
 				83B6D9771E6E9F8D00907965 /* Info.plist */,
+				832191CF1E7000970006FD43 /* Assets.xcassets */,
 				83B6D9661E6E9F8D00907965 /* Supporting Files */,
 			);
 			path = LJMapPointOC;
@@ -166,9 +177,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				832191DC1E7000A50006FD43 /* LJMap.storyboard in Resources */,
+				832191D01E7000970006FD43 /* Assets.xcassets in Resources */,
+				832191DE1E7000D50006FD43 /* Map.xcassets in Resources */,
 				83B6D9761E6E9F8D00907965 /* LaunchScreen.storyboard in Resources */,
-				83B6D9731E6E9F8D00907965 /* Assets.xcassets in Resources */,
-				83B6D9711E6E9F8D00907965 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -179,12 +191,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				83B6D96E1E6E9F8D00907965 /* LJMapSController.m in Sources */,
+				832191D91E7000A50006FD43 /* LJMapSController.m in Sources */,
 				83B6D9831E6EA04100907965 /* LJLocationManager.m in Sources */,
-				83B6D9861E6EA54A00907965 /* LJMapSearch.m in Sources */,
+				832191DA1E7000A50006FD43 /* LJMapSearch.m in Sources */,
 				83B6D96B1E6E9F8D00907965 /* AppDelegate.m in Sources */,
 				83B6D9681E6E9F8D00907965 /* main.m in Sources */,
-				832191CE1E6FB2C50006FD43 /* LJSearchMapController.m in Sources */,
+				832191DB1E7000A50006FD43 /* LJSearchMapController.m in Sources */,
 				83B6D9821E6EA04100907965 /* LJAlertLocation.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -192,14 +204,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		83B6D96F1E6E9F8D00907965 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				83B6D9701E6E9F8D00907965 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		83B6D9741E6E9F8D00907965 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (

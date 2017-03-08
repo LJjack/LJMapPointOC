@@ -51,6 +51,7 @@ UITableViewDelegate, UITableViewDataSource>
 #pragma mark - Action
 
 - (IBAction)clickBackBtn:(UIButton *)sender {
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (IBAction)clickSearchBtn:(UIButton *)sender {
