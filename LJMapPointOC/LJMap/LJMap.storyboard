@@ -91,11 +91,13 @@
                     <navigationItem key="navigationItem" id="0vh-7v-2rq">
                         <rightBarButtonItems>
                             <barButtonItem title="确定" id="SOM-md-lFw">
+                                <color key="tintColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <connections>
                                     <action selector="clickSureItem:" destination="GEw-Ow-GOi" id="boo-f8-vFw"/>
                                 </connections>
                             </barButtonItem>
                             <barButtonItem systemItem="search" id="PtV-44-ofS">
+                                <color key="tintColor" white="0.29432508680555558" alpha="1" colorSpace="calibratedWhite"/>
                                 <connections>
                                     <action selector="clickSearchBtn:" destination="GEw-Ow-GOi" id="QSO-Hc-IU6"/>
                                 </connections>

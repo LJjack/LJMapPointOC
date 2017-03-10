@@ -65,8 +65,8 @@ LJSearchMapControllerDelegate>
     self.mapView.userTrackingMode = MKUserTrackingModeFollow;
     CLLocationCoordinate2D center = CLLocationCoordinate2DMake(26.0, 119.0);
     MKCoordinateSpan span = MKCoordinateSpanMake(0.002, 0.002);
-    MKCoordinateRegion region = MKCoordinateRegionMake(center, span);
-    [self.mapView setRegion:region animated:NO];
+    self.mapView.region = MKCoordinateRegionMake(center, span);
+    
     //添加大头针
     self.currentAnnotation = [[LJAnnotation alloc] initWithCoordinate:center];
     [self.mapView addAnnotation:self.currentAnnotation];
@@ -89,11 +89,15 @@ LJSearchMapControllerDelegate>
 #pragma mark - MKMapViewDelegate
 
 - (void)mapView:(MKMapView *)mapView didUpdateUserLocation:(MKUserLocation *)userLocation {
-    if (!self.isUserLocation) {
-        CLLocationCoordinate2D center = userLocation.location.coordinate;
-        [mapView setCenterCoordinate:center animated:YES];
+    if (self.isUserLocation) return;
+    
+    CLLocationCoordinate2D center = userLocation.location.coordinate;
+    [mapView setCenterCoordinate:center animated:YES];
+    self.currentAnnotation.coordinate = center;
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.8 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         self.isUserLocation = YES;
-    }
+    });
+    
 }
 
 - (void)mapView:(MKMapView *)mapView regionWillChangeAnimated:(BOOL)animated {
@@ -101,7 +105,6 @@ LJSearchMapControllerDelegate>
     if (self.currentAnnotation) {
         [mapView removeAnnotation:self.currentAnnotation];
     }
-    
 }
 
 - (void)mapView:(MKMapView *)mapView regionDidChangeAnimated:(BOOL)animated {
@@ -123,20 +126,19 @@ LJSearchMapControllerDelegate>
 }
 
 - (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id<MKAnnotation>)annotation {
-    MKAnnotationView *annView = [mapView dequeueReusableAnnotationViewWithIdentifier:@"LJAnnotationViewCurrent"];
-    if (!annView) {
-        annView = [[MKAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:@"LJAnnotationViewCurrent"];
-    }
-    annView.annotation = annotation;
+    static NSString *annotationIdentifier = @"LJAnnotationViewCurrent";
+    if (mapView != self.mapView) return nil;
     
-    CLLocationCoordinate2D currCoord = annotation.coordinate;
-    CLLocationCoordinate2D userCoord = mapView.userLocation.coordinate;
-    if (currCoord.latitude == userCoord.latitude && currCoord.longitude == userCoord.longitude) {
-        
-    } else {
-        annView.image = [UIImage imageNamed:@"fav_fileicon_loc90"];
+    if ([annotation isKindOfClass:[LJAnnotation class]]) {
+        MKAnnotationView *annotationView = [mapView dequeueReusableAnnotationViewWithIdentifier:annotationIdentifier];
+        if (!annotationView) {
+            annotationView = [[MKAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:annotationIdentifier];
+        }
+        annotationView.annotation = annotation;
+        annotationView.image = [UIImage imageNamed:@"fav_fileicon_loc90"];
+        return annotationView;
     }
-    return annView;
+    return nil;
 }
 
 #pragma mark - UITableViewDelegate, UITableViewDataSource 
