@@ -92,7 +92,7 @@ LJSearchMapControllerDelegate>
     if (self.isUserLocation) return;
     
     CLLocationCoordinate2D center = userLocation.location.coordinate;
-    [mapView setCenterCoordinate:center animated:YES];
+    mapView.centerCoordinate = center;
     self.currentAnnotation.coordinate = center;
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.8 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         self.isUserLocation = YES;

@@ -13,6 +13,7 @@
 		832191DB1E7000A50006FD43 /* LJSearchMapController.m in Sources */ = {isa = PBXBuildFile; fileRef = 832191D71E7000A50006FD43 /* LJSearchMapController.m */; };
 		832191DC1E7000A50006FD43 /* LJMap.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 832191D81E7000A50006FD43 /* LJMap.storyboard */; };
 		832191DE1E7000D50006FD43 /* Map.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 832191DD1E7000D50006FD43 /* Map.xcassets */; };
+		839A80C41E79316400119F7C /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 839A80C31E79316400119F7C /* MapKit.framework */; };
 		83B6D9681E6E9F8D00907965 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 83B6D9671E6E9F8D00907965 /* main.m */; };
 		83B6D96B1E6E9F8D00907965 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 83B6D96A1E6E9F8D00907965 /* AppDelegate.m */; };
 		83B6D9761E6E9F8D00907965 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 83B6D9741E6E9F8D00907965 /* LaunchScreen.storyboard */; };
@@ -30,6 +31,7 @@
 		832191D71E7000A50006FD43 /* LJSearchMapController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LJSearchMapController.m; sourceTree = "<group>"; };
 		832191D81E7000A50006FD43 /* LJMap.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LJMap.storyboard; sourceTree = "<group>"; };
 		832191DD1E7000D50006FD43 /* Map.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Map.xcassets; sourceTree = "<group>"; };
+		839A80C31E79316400119F7C /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		83B6D9631E6E9F8D00907965 /* LJMapPointOC.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LJMapPointOC.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		83B6D9671E6E9F8D00907965 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		83B6D9691E6E9F8D00907965 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -47,6 +49,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				839A80C41E79316400119F7C /* MapKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -68,11 +71,20 @@
 			path = LJMap;
 			sourceTree = "<group>";
 		};
+		839A80C21E79316400119F7C /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				839A80C31E79316400119F7C /* MapKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		83B6D95A1E6E9F8D00907965 = {
 			isa = PBXGroup;
 			children = (
 				83B6D9651E6E9F8D00907965 /* LJMapPointOC */,
 				83B6D9641E6E9F8D00907965 /* Products */,
+				839A80C21E79316400119F7C /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -151,6 +163,11 @@
 						CreatedOnToolsVersion = 8.2.1;
 						DevelopmentTeam = N5VR4US535;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.Maps.iOS = {
+								enabled = 0;
+							};
+						};
 					};
 				};
 			};
