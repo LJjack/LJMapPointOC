@@ -89,7 +89,7 @@ static NSString *userAnnotationIdentifier = @"LJUserAnnotationViewCurrent";
 }
 
 - (IBAction)clickSureItem:(UIBarButtonItem *)sender {
-    
+    NSLog(@"%@",self.selectedCell);
 }
 
 
@@ -156,6 +156,7 @@ static NSString *userAnnotationIdentifier = @"LJUserAnnotationViewCurrent";
             [[LJLocationManager sharedManager] reverseGeocodeWithLatitude:coord.latitude longitude:coord.longitude completionHandler:^(CLPlacemark *placemark) {
                 NSMutableArray *mArr = places.mutableCopy;
                 LJMapPlace *fristModel = [LJMapTool placemarkToMapPlace:placemark];
+                fristModel.selected = YES;
                 [mArr insertObject:fristModel atIndex:0];
                 self.places = mArr.copy;
                 dispatch_async(dispatch_get_main_queue(), ^{
@@ -205,16 +206,31 @@ static NSString *userAnnotationIdentifier = @"LJUserAnnotationViewCurrent";
     LJMapPlace *model = self.places[indexPath.row];
     cell.textLabel.text = model.name;
     cell.detailTextLabel.text = model.detailName;
+    if (model.selected) {
+        cell.accessoryType = UITableViewCellAccessoryCheckmark;
+        self.selectedCell = cell;
+    } else {
+        cell.accessoryType = UITableViewCellAccessoryNone;
+    }
     return cell;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    self.selectedCell.accessoryType = UITableViewCellAccessoryNone;
-    UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
-    cell.accessoryType = UITableViewCellAccessoryCheckmark;
-    self.selectedCell = cell;
     
+    if (self.selectedCell) {
+        LJMapPlace *selecedModel = self.places[[tableView indexPathForCell:self.selectedCell].row];
+        selecedModel.selected = NO;
+        [tableView beginUpdates];
+        [tableView reloadRowsAtIndexPaths:@[self.selectedCell] withRowAnimation:UITableViewRowAnimationNone];
+        [tableView endUpdates];
+    }
     LJMapPlace *model = self.places[indexPath.row];
+    model.selected = YES;
+    UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+    self.selectedCell = cell;
+    [tableView beginUpdates];
+    [tableView reloadRowsAtIndexPaths:@[cell] withRowAnimation:UITableViewRowAnimationNone];
+    [tableView endUpdates];
     CLLocationCoordinate2D coord = CLLocationCoordinate2DMake(model.latitude, model.longitude);
     [self.mapView setCenterCoordinate:coord animated:YES];
     
