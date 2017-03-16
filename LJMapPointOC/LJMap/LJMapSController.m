@@ -8,6 +8,7 @@
 
 #import "LJMapSController.h"
 #import "LJSearchMapController.h"
+#import "LJLocationManager.h"
 
 @interface LJAnnotation : NSObject<MKAnnotation>
 
@@ -50,7 +51,13 @@ LJSearchMapControllerDelegate>
 
 @property (strong, nonatomic) UITableViewCell *selectedCell;
 
+@property (strong, nonatomic) MKAnnotationView *userAnnotationView;
+
 @end
+
+
+static NSString *annotationIdentifier = @"LJAnnotationViewCurrent";
+static NSString *userAnnotationIdentifier = @"LJUserAnnotationViewCurrent";
 
 @implementation LJMapSController
 
@@ -58,11 +65,11 @@ LJSearchMapControllerDelegate>
     [super viewDidLoad];
     self.tableView.tableFooterView = [UIView new];
     [self setupMap];
-    
 }
 
 - (void)setupMap {
-    self.mapView.userTrackingMode = MKUserTrackingModeFollow;
+    self.mapView.userTrackingMode = MKUserTrackingModeFollowWithHeading;
+    self.mapView.showsCompass = YES;
     CLLocationCoordinate2D center = CLLocationCoordinate2DMake(26.0, 119.0);
     MKCoordinateSpan span = MKCoordinateSpanMake(0.002, 0.002);
     self.mapView.region = MKCoordinateRegionMake(center, span);
@@ -89,14 +96,41 @@ LJSearchMapControllerDelegate>
 #pragma mark - MKMapViewDelegate
 
 - (void)mapView:(MKMapView *)mapView didUpdateUserLocation:(MKUserLocation *)userLocation {
-    if (self.isUserLocation) return;
     
-    CLLocationCoordinate2D center = userLocation.location.coordinate;
-    mapView.centerCoordinate = center;
-    self.currentAnnotation.coordinate = center;
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.8 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        self.isUserLocation = YES;
-    });
+    if (!self.isUserLocation) {
+        CLLocationCoordinate2D center = userLocation.location.coordinate;
+        mapView.centerCoordinate = center;
+        self.currentAnnotation.coordinate = center;
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.8 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            self.isUserLocation = YES;
+        });
+    }
+    
+    if (self.userAnnotationView) {
+        [self rotateWithAnnotationView:self.userAnnotationView heading:userLocation.heading];
+    }
+    
+}
+
+- (void)rotateWithAnnotationView:(MKAnnotationView *)annotationView heading:(CLHeading *)heading {
+    //将设备的方向角度换算成弧度
+    double head = M_PI * heading.magneticHeading / 180.0;
+    //创建不断旋转CALayer的transform属性的动画
+    CABasicAnimation *rotateAnimation = [CABasicAnimation animationWithKeyPath:@"transform"];
+    //动画起始值
+    CATransform3D formValue = annotationView.layer.transform;
+    rotateAnimation.fromValue = [NSValue valueWithCATransform3D:formValue];
+    //绕Z轴旋转heading弧度的变换矩阵
+    CATransform3D toValue = CATransform3DMakeRotation(head, 0, 0, 1);
+    //设置动画结束值
+    rotateAnimation.toValue = [NSValue valueWithCATransform3D:toValue];
+    rotateAnimation.duration = 0.35;
+    rotateAnimation.removedOnCompletion = YES;
+    //设置动画结束后layer的变换矩阵
+    annotationView.layer.transform = toValue;
+    
+    //添加动画
+    [annotationView.layer addAnimation:rotateAnimation forKey:nil];
     
 }
 
@@ -118,18 +152,27 @@ LJSearchMapControllerDelegate>
         [self.activityIView startAnimating];
         LJMapSearch *search = [[LJMapSearch alloc] initWithRegion:region query:@"餐厅"];
         [search startWithCompletionHandler:^(NSArray<LJMapPlace *> *places) {
-            self.places = places;
-            [self.tableView reloadData];
-            [self.activityIView stopAnimating];
+            CLLocationCoordinate2D coord = self.currentAnnotation.coordinate;
+            [[LJLocationManager sharedManager] reverseGeocodeWithLatitude:coord.latitude longitude:coord.longitude completionHandler:^(CLPlacemark *placemark) {
+                NSMutableArray *mArr = places.mutableCopy;
+                LJMapPlace *fristModel = [LJMapTool placemarkToMapPlace:placemark];
+                [mArr insertObject:fristModel atIndex:0];
+                self.places = mArr.copy;
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [self.tableView reloadData];
+                    [self.activityIView stopAnimating];
+                });
+            }];
         }];
     }
 }
 
 - (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id<MKAnnotation>)annotation {
-    static NSString *annotationIdentifier = @"LJAnnotationViewCurrent";
+    
     if (mapView != self.mapView) return nil;
     
     if ([annotation isKindOfClass:[LJAnnotation class]]) {
+        
         MKAnnotationView *annotationView = [mapView dequeueReusableAnnotationViewWithIdentifier:annotationIdentifier];
         if (!annotationView) {
             annotationView = [[MKAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:annotationIdentifier];
@@ -137,6 +180,16 @@ LJSearchMapControllerDelegate>
         annotationView.annotation = annotation;
         annotationView.image = [UIImage imageNamed:@"fav_fileicon_loc90"];
         return annotationView;
+    } else if ([annotation isKindOfClass:[MKUserLocation class]]) {
+        
+        MKAnnotationView *userAnnotationView = [mapView dequeueReusableAnnotationViewWithIdentifier:userAnnotationIdentifier];
+        if (!userAnnotationView) {
+            userAnnotationView = [[MKAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:userAnnotationIdentifier];
+        }
+        userAnnotationView.annotation = annotation;
+        userAnnotationView.image = [UIImage imageNamed:@"userAnnotation"];
+        self.userAnnotationView = userAnnotationView;
+        return userAnnotationView;
     }
     return nil;
 }

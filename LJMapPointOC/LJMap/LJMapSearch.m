@@ -12,6 +12,19 @@
 
 @end
 
+@implementation LJMapTool
+
++ (LJMapPlace *)placemarkToMapPlace:(CLPlacemark *)placemark {
+    LJMapPlace *model = [[LJMapPlace alloc] init];
+    model.name = placemark.name;
+    model.detailName = placemark.thoroughfare;
+    model.latitude = placemark.location.coordinate.latitude;
+    model.longitude = placemark.location.coordinate.longitude;
+    return model;
+}
+
+@end
+
 @interface LJMapSearch ()<MKLocalSearchCompleterDelegate>
 
 @property (nonatomic, copy) NSString *query;
@@ -40,12 +53,7 @@
             NSMutableArray *mArr = [NSMutableArray array];
             for (MKMapItem *item in response.mapItems) {
                 if (!item.isCurrentLocation) {
-                    MKPlacemark *place = item.placemark;
-                    LJMapPlace *model = [[LJMapPlace alloc] init];
-                    model.name = place.name;
-                    model.detailName = place.thoroughfare;
-                    model.latitude = place.location.coordinate.latitude;
-                    model.longitude = place.location.coordinate.longitude;
+                    LJMapPlace *model = [LJMapTool placemarkToMapPlace:item.placemark];
                     [mArr addObject:model];
                 }
             }

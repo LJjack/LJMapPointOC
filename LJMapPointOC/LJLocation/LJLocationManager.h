@@ -6,19 +6,18 @@
 //  Copyright © 2016年 不囧. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
 #import <CoreLocation/CLPlacemark.h>
 
 #import "LJAlertLocation.h"
 
-typedef void(^LJLocationManagerDidUpdateBlock)(CGFloat latitude,CGFloat longitude);
+typedef void(^LJLocationManagerDidUpdateBlock)(double latitude,double longitude);
 typedef void(^LJLocationManagerDidFailBlock)(NSError *error);
 
 @interface LJLocationManager : NSObject
 
-@property (nonatomic, assign) CGFloat latitude;//纬度
+@property (nonatomic, assign) double latitude;//纬度
 
-@property (nonatomic, assign) CGFloat longitude;//经度
+@property (nonatomic, assign) double longitude;//经度
 
 + (instancetype)sharedManager;
 /**
@@ -40,8 +39,8 @@ typedef void(^LJLocationManagerDidFailBlock)(NSError *error);
  *  @param longitude         经度
  *  @param completionHandler 结果 block
  */
--(void)reverseGeocodeWithLatitude:(CGFloat)latitude
-                        longitude:(CGFloat)longitude
+-(void)reverseGeocodeWithLatitude:(double)latitude
+                        longitude:(double)longitude
                 completionHandler:(void(^)(CLPlacemark *placemark))completionHandler;
 
 /**

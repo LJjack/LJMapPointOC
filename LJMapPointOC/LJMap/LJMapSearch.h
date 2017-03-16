@@ -19,6 +19,14 @@
 
 @property (nonatomic, assign) double longitude;
 
+@property (nonatomic, assign) BOOL selected;
+
+@end
+
+@interface LJMapTool : NSObject
+
++ (LJMapPlace *)placemarkToMapPlace:(CLPlacemark *)placemark;
+
 @end
 
 @interface LJMapSearch : NSObject
@@ -28,4 +36,6 @@
 - (void)startWithCompletionHandler:(void(^)(NSArray<LJMapPlace *> *places))handler;
 
 @end
+
+
 

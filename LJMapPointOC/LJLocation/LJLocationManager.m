@@ -12,7 +12,7 @@
 
 @interface LJLocationManager ()<CLLocationManagerDelegate>
 
-@property (nonatomic, strong) CLLocationManager *locationManager;
+@property (nonatomic, strong) CLLocationManager *manager;
 
 @property (nonatomic, copy) LJLocationManagerDidUpdateBlock didUpdateBlock;
 
@@ -28,9 +28,8 @@
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         sharedInstance = [[LJLocationManager alloc] init];
-        [sharedInstance locationManager];
+        [sharedInstance manager];
     });
-    
     return sharedInstance;
 }
 
@@ -55,11 +54,11 @@
 }
 
 - (void)startUpdateLocation {
-    [self.locationManager startUpdatingLocation];
+    [self.manager startUpdatingLocation];
 }
 
 - (void)stopUpdateLocation {
-    [self.locationManager stopUpdatingLocation];
+    [self.manager stopUpdatingLocation];
 }
 
 //根据经纬度反向地理编译出地址信息
@@ -68,18 +67,15 @@
 }
 
 //根据经纬度反向地理编译出地址信息
--(void)reverseGeocodeWithLatitude:(CGFloat)latitude
-                        longitude:(CGFloat)longitude
+-(void)reverseGeocodeWithLatitude:(double)latitude
+                        longitude:(double)longitude
                 completionHandler:(void(^)(CLPlacemark *placemark))completionHandler {
-    
     CLGeocoder *geocoder = [[CLGeocoder alloc] init];
     CLLocation *location = [[CLLocation alloc] initWithLatitude:latitude longitude:longitude];
     [geocoder reverseGeocodeLocation:location completionHandler:^(NSArray *array, NSError *error) {
-        
         CLPlacemark *placemark = nil;
         if (!error && array.count) {
             placemark = [array objectAtIndex:0];
-            
         }
         if (completionHandler) {
             completionHandler(placemark);
@@ -94,7 +90,6 @@
     CLLocation *location = [locations lastObject];
     self.latitude = location.coordinate.latitude;
     self.longitude = location.coordinate.longitude;
-    
     if (self.didUpdateBlock) {
         self.didUpdateBlock(location.coordinate.latitude,location.coordinate.longitude);
     }
@@ -109,16 +104,16 @@
 
 #pragma mark - Getters And Setters
 
-- (CLLocationManager *)locationManager {
-    if (!_locationManager) {
-        _locationManager = [[CLLocationManager alloc] init];
-        _locationManager.delegate = self;
-        _locationManager.desiredAccuracy = kCLLocationAccuracyBest;
-        _locationManager.distanceFilter = 1000;
-        [_locationManager requestWhenInUseAuthorization]; //使用程序其间允许访问位置数据
+- (CLLocationManager *)manager {
+    if (!_manager) {
+        _manager = [[CLLocationManager alloc] init];
+        _manager.delegate = self;
+        _manager.desiredAccuracy = kCLLocationAccuracyBest;
+        _manager.distanceFilter = 1000;
+        [_manager requestWhenInUseAuthorization]; //使用程序其间允许访问位置数据
         [self startUpdateLocation];//开启定位
     }
-    return _locationManager;
+    return _manager;
 }
 
 @end
