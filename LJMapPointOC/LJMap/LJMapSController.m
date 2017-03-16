@@ -216,24 +216,16 @@ static NSString *userAnnotationIdentifier = @"LJUserAnnotationViewCurrent";
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    
     if (self.selectedCell) {
         LJMapPlace *selecedModel = self.places[[tableView indexPathForCell:self.selectedCell].row];
         selecedModel.selected = NO;
-        [tableView beginUpdates];
-        [tableView reloadRowsAtIndexPaths:@[self.selectedCell] withRowAnimation:UITableViewRowAnimationNone];
-        [tableView endUpdates];
+        self.selectedCell.accessoryType = UITableViewCellAccessoryNone;
     }
     LJMapPlace *model = self.places[indexPath.row];
     model.selected = YES;
     UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+    cell.accessoryType = UITableViewCellAccessoryCheckmark;
     self.selectedCell = cell;
-    [tableView beginUpdates];
-    [tableView reloadRowsAtIndexPaths:@[cell] withRowAnimation:UITableViewRowAnimationNone];
-    [tableView endUpdates];
-    CLLocationCoordinate2D coord = CLLocationCoordinate2DMake(model.latitude, model.longitude);
-    [self.mapView setCenterCoordinate:coord animated:YES];
-    
 }
 
 #pragma mark - LJSearchMapControllerDelegate
