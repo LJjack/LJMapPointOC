@@ -8,6 +8,7 @@
 
 #import "ViewController.h"
 #import "LJMapSController.h"
+#import <MapKit/MapKit.h>
 
 @interface ViewController ()<LJMapSControllerDelegate>
 
@@ -33,9 +34,14 @@
 
 - (void)mapSController:(LJMapSController *)controller didSelecedPlace:(LJMapPlace *)place {
     
-    self.latLabel.text = [NSString stringWithFormat:@"%f",place.latitude];
-    self.lngLabel.text = [NSString stringWithFormat:@"%f",place.longitude];
+    self.latLabel.text = [NSString stringWithFormat:@"%f",place.placemark.location.coordinate.latitude];
+    self.lngLabel.text = [NSString stringWithFormat:@"%f",place.placemark.location.coordinate.longitude];
     self.cityLabel.text = place.name;
+    
+//    MKMapItem *currentLocation = [MKMapItem mapItemForCurrentLocation];
+//    MKPlacemark *placemark = [[MKPlacemark alloc] initWithPlacemark:place.placemark];
+//    MKMapItem *toLocation = [[MKMapItem alloc] initWithPlacemark:placemark];
+//    [MKMapItem openMapsWithItems:@[currentLocation, toLocation] launchOptions:@{MKLaunchOptionsDirectionsModeKey:MKLaunchOptionsDirectionsModeDriving,MKLaunchOptionsShowsTrafficKey: [NSNumber numberWithBool:YES]}];
 }
 
 #pragma mark - Navigation

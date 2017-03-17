@@ -236,7 +236,7 @@ static NSString *userAnnotationIdentifier = @"LJUserAnnotationViewCurrent";
 #pragma mark - LJSearchMapControllerDelegate
 
 - (void)searchMapController:(LJSearchMapController *)controller didFinishSeleted:(LJMapPlace *)place {
-    CLLocationCoordinate2D coord = CLLocationCoordinate2DMake(place.latitude, place.longitude);
+    CLLocationCoordinate2D coord = place.placemark.location.coordinate;
     [self.mapView setCenterCoordinate:coord animated:YES];
 }
 

@@ -14,8 +14,7 @@
     LJMapPlace *model = [[LJMapPlace alloc] init];
     model.name = placemark.name;
     model.detailName = placemark.thoroughfare;
-    model.latitude = placemark.location.coordinate.latitude;
-    model.longitude = placemark.location.coordinate.longitude;
+    model.placemark = placemark;
     return model;
 }
 

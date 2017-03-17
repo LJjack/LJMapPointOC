@@ -7,16 +7,14 @@
 //
 
 #import <Foundation/Foundation.h>
-
+#import <CoreLocation/CLPlacemark.h>
 @interface LJMapPlace : NSObject
 
 @property (nonatomic, copy) NSString *name;
 
 @property (nonatomic, copy) NSString *detailName;
 
-@property (nonatomic, assign) double latitude;
-
-@property (nonatomic, assign) double longitude;
+@property (nonatomic, strong) CLPlacemark *placemark;
 
 @property (nonatomic, assign) BOOL selected;
 
