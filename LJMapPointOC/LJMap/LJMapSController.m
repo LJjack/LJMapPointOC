@@ -89,7 +89,12 @@ static NSString *userAnnotationIdentifier = @"LJUserAnnotationViewCurrent";
 }
 
 - (IBAction)clickSureItem:(UIBarButtonItem *)sender {
-    NSLog(@"%@",self.selectedCell);
+    if ([self.delegate respondsToSelector:@selector(mapSController:didSelecedPlace:)]) {
+        NSIndexPath *indexPath = [self.tableView indexPathForCell:self.selectedCell];
+        LJMapPlace *place = self.places[indexPath.row];
+        [self.delegate mapSController:self didSelecedPlace:place];
+    }
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 

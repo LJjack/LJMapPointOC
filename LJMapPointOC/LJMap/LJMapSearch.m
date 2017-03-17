@@ -8,10 +8,6 @@
 
 #import "LJMapSearch.h"
 
-@implementation LJMapPlace
-
-@end
-
 @implementation LJMapTool
 
 + (LJMapPlace *)placemarkToMapPlace:(CLPlacemark *)placemark {

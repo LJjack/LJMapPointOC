@@ -7,9 +7,19 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "LJMapPlace.h"
+@class LJMapSController;
+
+@protocol LJMapSControllerDelegate <NSObject>
+
+@optional
+- (void)mapSController:(LJMapSController *)controller didSelecedPlace:(LJMapPlace *)place;
+
+@end
 
 @interface LJMapSController : UIViewController
 
+@property (nonatomic, weak) id<LJMapSControllerDelegate> delegate;
 
 @end
 
