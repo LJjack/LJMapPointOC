@@ -52,5 +52,14 @@ typedef void(^LJLocationManagerDidFailBlock)(NSError *error);
  */
 - (void)stopUpdateLocation;
 
+/**
+ 开始方向
+ */
+- (void)startUpdatingHeading;
+
+/**
+ 开始方向
+ */
+- (void)stopUpdatingHeading;
 
 @end

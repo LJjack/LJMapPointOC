@@ -50,6 +50,7 @@
         request.naturalLanguageQuery = self.query;
         MKLocalSearch *search = [[MKLocalSearch alloc] initWithRequest:request];
         [search startWithCompletionHandler:^(MKLocalSearchResponse * _Nullable response, NSError * _Nullable error) {
+            NSLog(@"start  %@",error.localizedDescription);
             NSMutableArray *mArr = [NSMutableArray array];
             for (MKMapItem *item in response.mapItems) {
                 if (!item.isCurrentLocation) {

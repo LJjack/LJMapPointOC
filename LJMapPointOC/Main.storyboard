@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="LHp-Uk-Qcg">
+            <objects>
+                <viewController id="3X2-LP-g2e" customClass="ViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="L7A-XN-yfc"/>
+                        <viewControllerLayoutGuide type="bottom" id="wIs-sE-Lxv"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="ckf-Or-n2s">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LgL-kZ-2pe">
+                                <rect key="frame" x="156.5" y="73" width="62" height="30"/>
+                                <state key="normal" title="打开地图"/>
+                                <connections>
+                                    <segue destination="du2-H3-CvK" kind="presentation" identifier="openMapSController" id="Ts6-cv-n8j"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="纬度：" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MnL-ZK-Kzd">
+                                <rect key="frame" x="34" y="206" width="52" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="城市：" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SeC-fA-OQZ">
+                                <rect key="frame" x="34" y="271" width="52" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YNe-9G-zn9">
+                                <rect key="frame" x="98" y="162" width="0.0" height="0.0"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dem-GU-Obq">
+                                <rect key="frame" x="98" y="184" width="0.0" height="0.0"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qj5-Q8-fz3">
+                                <rect key="frame" x="98" y="229" width="0.0" height="0.0"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="经度：" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gIM-zS-fkG">
+                                <rect key="frame" x="34" y="161" width="52" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="LgL-kZ-2pe" firstAttribute="centerX" secondItem="ckf-Or-n2s" secondAttribute="centerX" id="5ED-MB-hrL"/>
+                            <constraint firstItem="LgL-kZ-2pe" firstAttribute="top" secondItem="L7A-XN-yfc" secondAttribute="bottom" constant="53" id="9bP-IL-NyO"/>
+                            <constraint firstItem="YNe-9G-zn9" firstAttribute="leading" secondItem="gIM-zS-fkG" secondAttribute="trailing" constant="12" id="9k0-ag-Yvo"/>
+                            <constraint firstItem="gIM-zS-fkG" firstAttribute="leading" secondItem="ckf-Or-n2s" secondAttribute="leadingMargin" constant="18" id="DLc-Wc-wzV"/>
+                            <constraint firstItem="qj5-Q8-fz3" firstAttribute="leading" secondItem="SeC-fA-OQZ" secondAttribute="trailing" constant="12" id="IDa-2g-JcY"/>
+                            <constraint firstItem="YNe-9G-zn9" firstAttribute="top" secondItem="L7A-XN-yfc" secondAttribute="bottom" constant="142" id="KCl-rr-99A"/>
+                            <constraint firstItem="gIM-zS-fkG" firstAttribute="top" secondItem="L7A-XN-yfc" secondAttribute="bottom" constant="141" id="SYO-E9-ByQ"/>
+                            <constraint firstItem="Dem-GU-Obq" firstAttribute="top" secondItem="YNe-9G-zn9" secondAttribute="bottom" constant="22" id="cVG-r5-GOk"/>
+                            <constraint firstItem="MnL-ZK-Kzd" firstAttribute="top" secondItem="gIM-zS-fkG" secondAttribute="bottom" constant="24" id="ehG-ra-VrN"/>
+                            <constraint firstItem="qj5-Q8-fz3" firstAttribute="top" secondItem="Dem-GU-Obq" secondAttribute="bottom" constant="45" id="mns-aZ-bca"/>
+                            <constraint firstItem="MnL-ZK-Kzd" firstAttribute="leading" secondItem="ckf-Or-n2s" secondAttribute="leadingMargin" constant="18" id="oS3-Qz-yhD"/>
+                            <constraint firstItem="Dem-GU-Obq" firstAttribute="leading" secondItem="MnL-ZK-Kzd" secondAttribute="trailing" constant="12" id="qxr-Ax-DRX"/>
+                            <constraint firstItem="SeC-fA-OQZ" firstAttribute="leading" secondItem="ckf-Or-n2s" secondAttribute="leadingMargin" constant="18" id="uyd-Vv-GMS"/>
+                            <constraint firstItem="SeC-fA-OQZ" firstAttribute="top" secondItem="MnL-ZK-Kzd" secondAttribute="bottom" constant="44" id="yDL-cF-k9b"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="cityLabel" destination="qj5-Q8-fz3" id="yBA-hW-k8W"/>
+                        <outlet property="latLabel" destination="Dem-GU-Obq" id="NZP-na-dZa"/>
+                        <outlet property="lngLabel" destination="YNe-9G-zn9" id="Fwi-6k-Zej"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6le-6b-Whw" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-193" y="-64"/>
+        </scene>
+        <!--LJMap-->
+        <scene sceneID="F9s-pr-mNu">
+            <objects>
+                <viewControllerPlaceholder storyboardName="LJMap" id="du2-H3-CvK" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Oq4-ju-jGj" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="439" y="-65"/>
+        </scene>
+    </scenes>
+</document>

@@ -61,6 +61,14 @@
     [self.manager stopUpdatingLocation];
 }
 
+- (void)startUpdatingHeading {
+    [self.manager startUpdatingHeading];
+}
+
+- (void)stopUpdatingHeading {
+    [self.manager stopUpdatingHeading];
+}
+
 //根据经纬度反向地理编译出地址信息
 -(void)reverseGeocodeCompletionHandler:(void(^)(CLPlacemark *placemark))completionHandler {
     [self reverseGeocodeWithLatitude:self.latitude longitude:self.longitude completionHandler:completionHandler];
@@ -73,6 +81,7 @@
     CLGeocoder *geocoder = [[CLGeocoder alloc] init];
     CLLocation *location = [[CLLocation alloc] initWithLatitude:latitude longitude:longitude];
     [geocoder reverseGeocodeLocation:location completionHandler:^(NSArray *array, NSError *error) {
+        NSLog(@"%@",error.localizedDescription);
         CLPlacemark *placemark = nil;
         if (!error && array.count) {
             placemark = [array objectAtIndex:0];
@@ -102,6 +111,10 @@
     }
 }
 
+- (void)locationManager:(CLLocationManager *)manager didUpdateHeading:(CLHeading *)newHeading {
+    
+}
+
 #pragma mark - Getters And Setters
 
 - (CLLocationManager *)manager {
@@ -109,7 +122,7 @@
         _manager = [[CLLocationManager alloc] init];
         _manager.delegate = self;
         _manager.desiredAccuracy = kCLLocationAccuracyBest;
-        _manager.distanceFilter = 1000;
+//        _manager.distanceFilter = 1000;
         [_manager requestWhenInUseAuthorization]; //使用程序其间允许访问位置数据
         [self startUpdateLocation];//开启定位
     }

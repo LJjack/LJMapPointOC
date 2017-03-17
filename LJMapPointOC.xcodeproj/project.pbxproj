@@ -13,6 +13,8 @@
 		832191DB1E7000A50006FD43 /* LJSearchMapController.m in Sources */ = {isa = PBXBuildFile; fileRef = 832191D71E7000A50006FD43 /* LJSearchMapController.m */; };
 		832191DC1E7000A50006FD43 /* LJMap.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 832191D81E7000A50006FD43 /* LJMap.storyboard */; };
 		832191DE1E7000D50006FD43 /* Map.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 832191DD1E7000D50006FD43 /* Map.xcassets */; };
+		835ACBE11E7BB7C400675E79 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 835ACBE01E7BB7C400675E79 /* ViewController.m */; };
+		835ACBE31E7BB7DB00675E79 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 835ACBE21E7BB7DB00675E79 /* Main.storyboard */; };
 		839A80C41E79316400119F7C /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 839A80C31E79316400119F7C /* MapKit.framework */; };
 		83B6D9681E6E9F8D00907965 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 83B6D9671E6E9F8D00907965 /* main.m */; };
 		83B6D96B1E6E9F8D00907965 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 83B6D96A1E6E9F8D00907965 /* AppDelegate.m */; };
@@ -31,6 +33,9 @@
 		832191D71E7000A50006FD43 /* LJSearchMapController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LJSearchMapController.m; sourceTree = "<group>"; };
 		832191D81E7000A50006FD43 /* LJMap.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LJMap.storyboard; sourceTree = "<group>"; };
 		832191DD1E7000D50006FD43 /* Map.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Map.xcassets; sourceTree = "<group>"; };
+		835ACBDF1E7BB7C400675E79 /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		835ACBE01E7BB7C400675E79 /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		835ACBE21E7BB7DB00675E79 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		839A80C31E79316400119F7C /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		83B6D9631E6E9F8D00907965 /* LJMapPointOC.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LJMapPointOC.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		83B6D9671E6E9F8D00907965 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -102,6 +107,9 @@
 				83B6D97D1E6EA04100907965 /* LJLocation */,
 				83B6D9691E6E9F8D00907965 /* AppDelegate.h */,
 				83B6D96A1E6E9F8D00907965 /* AppDelegate.m */,
+				835ACBDF1E7BB7C400675E79 /* ViewController.h */,
+				835ACBE01E7BB7C400675E79 /* ViewController.m */,
+				835ACBE21E7BB7DB00675E79 /* Main.storyboard */,
 				832191D11E7000A50006FD43 /* LJMap */,
 				83B6D9741E6E9F8D00907965 /* LaunchScreen.storyboard */,
 				83B6D9771E6E9F8D00907965 /* Info.plist */,
@@ -195,6 +203,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				832191DC1E7000A50006FD43 /* LJMap.storyboard in Resources */,
+				835ACBE31E7BB7DB00675E79 /* Main.storyboard in Resources */,
 				832191D01E7000970006FD43 /* Assets.xcassets in Resources */,
 				832191DE1E7000D50006FD43 /* Map.xcassets in Resources */,
 				83B6D9761E6E9F8D00907965 /* LaunchScreen.storyboard in Resources */,
@@ -210,6 +219,7 @@
 			files = (
 				832191D91E7000A50006FD43 /* LJMapSController.m in Sources */,
 				83B6D9831E6EA04100907965 /* LJLocationManager.m in Sources */,
+				835ACBE11E7BB7C400675E79 /* ViewController.m in Sources */,
 				832191DA1E7000A50006FD43 /* LJMapSearch.m in Sources */,
 				83B6D96B1E6E9F8D00907965 /* AppDelegate.m in Sources */,
 				83B6D9681E6E9F8D00907965 /* main.m in Sources */,
