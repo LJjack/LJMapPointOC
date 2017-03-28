@@ -108,6 +108,13 @@ static NSString *userAnnotationIdentifier = @"LJUserAnnotationViewCurrent";
         self.currentAnnotation.coordinate = center;
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.8 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
             self.isUserLocation = YES;
+            [[LJLocationManager sharedManager] reverseGeocodeWithLatitude:center.latitude longitude:center.longitude completionHandler:^(CLPlacemark *placemark) {
+                
+                
+                
+            }];
+            
+            
         });
     }
     
